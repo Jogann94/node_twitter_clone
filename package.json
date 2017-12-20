@@ -1,0 +1,36 @@
+{
+  "name": "node_twitter_clone",
+  "version": "1.0.0",
+  "description": "Project for OTH Course Building Modern Web-Applications with Node JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jogann94/node_twitter_clone.git"
+  },
+  "author": "Johannes Malsam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jogann94/node_twitter_clone/issues"
+  },
+  "homepage": "https://github.com/Jogann94/node_twitter_clone#readme",
+  "dependencies": {
+    "handlebars": "^4.0.11",
+    "hapi": "^16.6.2",
+    "hapi-auth-cookie": "^7.0.0",
+    "inert": "^4.2.1",
+    "joi": "^13.0.2",
+    "mongoose": "^4.13.4",
+    "mongoose-seeder": "^1.2.1",
+    "vision": "^4.1.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.2",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "prettier-eslint": "^8.2.2"
+  }
+}
