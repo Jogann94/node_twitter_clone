@@ -4,21 +4,21 @@ const Joi = require('joi');
 exports.main = {
   auth: false,
   handler(request, reply) {
-    reply.view('main', { title: 'Welcome to Donations' });
+    reply.view('main', { title: 'Welcome to Litter' });
   },
 };
 
 exports.signup = {
   auth: false,
   handler(request, reply) {
-    reply.view('signup', { title: 'Sign up for Donations' });
+    reply.view('signup', { title: 'Sign up for Litter' });
   },
 };
 
 exports.login = {
   auth: false,
   handler(request, reply) {
-    reply.view('login', { title: 'Login to Donations' });
+    reply.view('login', { title: 'Login to Litter' });
   },
 };
 

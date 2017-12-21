@@ -1,5 +1,6 @@
 const Accounts = require('./app/controllers/accounts');
 const Assets = require('./app/controllers/assets');
+const Litter = require('./app/controllers/litter');
 
 module.exports = [
   { method: 'GET', path: '/', config: Accounts.main },
@@ -10,6 +11,8 @@ module.exports = [
   { method: 'GET', path: '/logout', config: Accounts.logout },
   { method: 'GET', path: '/settings', config: Accounts.viewSettings },
   { method: 'POST', path: '/settings', config: Accounts.updateSettings },
+
+  { method: 'GET', path: '/home', config: Litter.home },
 
   {
     method: 'GET',
