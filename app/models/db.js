@@ -15,6 +15,7 @@ mongoose.connection.on('connected', () => {
     const seeder = require('mongoose-seeder');
     const User = require('./user');
     const data = require('./initdata.json');
+    const Tweet = require('./tweet');
 
     seeder
       .seed(data, { dropDatabase: false, dropCollections: true })

@@ -19,5 +19,80 @@
       "email": "bart@simpson.com",
       "password": "secret"
     }
+  },
+  "tweets": {
+    "_model": "Tweet",
+    "bart_one": {
+      "user": "->users.bart",
+      "timestamp": "2017-06-23T18:25:43.511Z",
+      "likes": 200,
+      "content": "This is Barts first tweet"
+    },
+    "bart_two": {
+      "user": "->users.bart",
+      "timestamp": "2017-08-23T18:25:43.511Z",
+      "likes": 50,
+      "content": "This is Barts second tweet"
+    },
+    "bart_three": {
+      "user": "->users.bart",
+      "timestamp": "2017-10-23T18:25:43.511Z",
+      "likes": 30,
+      "content": "This is Barts third tweet"
+    },
+    "bart_four": {
+      "user": "->users.bart",
+      "timestamp": "2017-11-23T18:25:43.511Z",
+      "likes": 1,
+      "content": "This is Barts fourth tweet"
+    },
+    "homer_one": {
+      "user": "->users.homer",
+      "timestamp": "2017-06-23T18:25:43.511Z",
+      "likes": 24,
+      "content": "This is Homers first tweet"
+    },
+    "homer_two": {
+      "user": "->users.homer",
+      "timestamp": "2017-08-23T18:25:43.511Z",
+      "likes": 58,
+      "content": "This is Homers second tweet"
+    },
+    "homer_three": {
+      "user": "->users.homer",
+      "timestamp": "2017-10-23T18:25:43.511Z",
+      "likes": 234,
+      "content": "This is Homers third tweet"
+    },
+    "homer_four": {
+      "user": "->users.homer",
+      "timestamp": "2017-11-23T18:25:43.511Z",
+      "likes": 53,
+      "content": "This is Homers fourth tweet"
+    },
+    "marge_one": {
+      "user": "->users.marge",
+      "timestamp": "2017-06-23T18:25:43.511Z",
+      "likes": 54,
+      "content": "This is Marges first tweet"
+    },
+    "marge_two": {
+      "user": "->users.marge",
+      "timestamp": "2017-08-23T18:25:43.511Z",
+      "likes": 65,
+      "content": "This is Marges second tweet"
+    },
+    "marge_three": {
+      "user": "->users.marge",
+      "timestamp": "2017-10-23T18:25:43.511Z",
+      "likes": 200,
+      "content": "This is Marges third tweet"
+    },
+    "marge_four": {
+      "user": "->users.marge",
+      "timestamp": "2017-11-23T18:25:43.511Z",
+      "likes": 23,
+      "content": "This is Marges fourth tweet"
+    }
   }
 }
