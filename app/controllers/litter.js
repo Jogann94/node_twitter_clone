@@ -17,3 +17,19 @@ exports.home = {
       });
   },
 };
+
+exports.profile = {
+  handler(request, reply) {
+    const id = encodeURIComponent(request.params.userid);
+    User.findById(id)
+      .then((foundUser) => {
+        const pageTitle = `${foundUser.firstName} ${foundUser.lastName}`;
+        const ownProfile = foundUser.email === request.auth.credentials.loggedInUser;
+
+        reply.view('profile', { title: pageTitle, user: foundUser, isOwn: ownProfile });
+      })
+      .catch((err) => {
+        reply.redirect('/');
+      });
+  },
+};
