@@ -21,15 +21,50 @@ exports.home = {
 exports.profile = {
   handler(request, reply) {
     const id = encodeURIComponent(request.params.userid);
-    User.findById(id)
-      .then((foundUser) => {
-        const pageTitle = `${foundUser.firstName} ${foundUser.lastName}`;
-        const ownProfile = foundUser.email === request.auth.credentials.loggedInUser;
+    let userToLoad;
+    let pageTitle = null;
+    let ownProfile = null;
 
-        reply.view('profile', { title: pageTitle, user: foundUser, isOwn: ownProfile });
-      })
-      .catch((err) => {
-        reply.redirect('/');
+    function setProfileVars(userFound) {
+      userToLoad = userFound;
+      pageTitle = `${userFound.firstName} ${userFound.lastName}`;
+      ownProfile = userFound.email === request.auth.credentials.loggedInUser;
+    }
+
+    function replyProfileView(tweets) {
+      reply.view('profile', {
+        title: pageTitle,
+        user: userToLoad,
+        isOwn: ownProfile,
+        tweets,
       });
+    }
+
+    if (!id) {
+      const usermail = request.auth.credentials.loggedInUser;
+      User.findOne({ email: usermail })
+        .then((userFound) => {
+          setProfileVars(userFound);
+          return Tweet.find({ 'user.id': userFound.id });
+        })
+        .then((foundTweets) => {
+          replyProfileView(foundTweets);
+        })
+        .catch((err) => {
+          reply.redirect('/');
+        });
+    } else {
+      User.findById(id)
+        .then((userFound) => {
+          setProfileVars(userFound);
+          return Tweet.find({ 'user.id': userFound.id });
+        })
+        .then((tweetsFound) => {
+          replyProfileView(tweetsFound);
+        })
+        .catch((err) => {
+          reply.redirect('/');
+        });
+    }
   },
 };
