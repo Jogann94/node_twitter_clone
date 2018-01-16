@@ -1,5 +1,12 @@
-{{> mainmenu }}
+{{> mainmenu _id="profile"}}
 
 <section class="ui raised segment">
-  {{> userinfo }} {{> tweetfeed }}
+  <div class="ui grid">
+    <div class="six wide column">
+      {{> userinfo }}
+    </div>
+    <div class="ten wide right floated column">
+      {{> tweetfeed }}
+    </div>
+  </div>
 </section>

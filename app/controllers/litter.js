@@ -1,5 +1,5 @@
-const Tweet = require('../models/tweet');
 const User = require('../models/user');
+const Tweet = require('../models/tweet');
 
 exports.home = {
   handler(request, reply) {
@@ -45,10 +45,13 @@ exports.profile = {
       User.findOne({ email: usermail })
         .then((userFound) => {
           setProfileVars(userFound);
-          return Tweet.find({ 'user.id': userFound.id });
+          return Tweet.find({ user: userFound.id }).populate('user');
         })
         .then((foundTweets) => {
-          replyProfileView(foundTweets);
+          const profileTweets = foundTweets
+            .filter(t => t.user.email === userToLoad.email)
+            .sort('-timestamp user.firstName user.lastName');
+          replyProfileView(profileTweets);
         })
         .catch((err) => {
           reply.redirect('/');
@@ -57,7 +60,7 @@ exports.profile = {
       User.findById(id)
         .then((userFound) => {
           setProfileVars(userFound);
-          return Tweet.find({ 'user.id': userFound.id });
+          return Tweet.find({ user: id });
         })
         .then((tweetsFound) => {
           replyProfileView(tweetsFound);

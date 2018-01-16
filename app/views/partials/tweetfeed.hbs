@@ -1,16 +1,7 @@
-<section class="ui raised segment">
-  <div class="ui grid">
-    <div class="row">
-      <div class="twelve wide centered column">
-        <div class="ui raised segment">
-          <div class="ui  divider"></div>
-          <div class="ui feed">
-            {{#each tweets}} {{> tweet}}
-            <div class="ui  divider"></div>
-            {{/each}}
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="ui raised segment">
+  <div class="ui feed">
+    {{#each tweets}} {{> tweet}}
+    <div class="ui  divider"></div>
+    {{/each}}
   </div>
-</section>
+</div>
