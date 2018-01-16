@@ -1,6 +1,7 @@
 const Accounts = require('./app/controllers/accounts');
 const Assets = require('./app/controllers/assets');
 const Litter = require('./app/controllers/litter');
+const TweetController = require('./app/controllers/tweetcontroller');
 
 module.exports = [
   { method: 'GET', path: '/', config: Accounts.main },
@@ -24,5 +25,11 @@ module.exports = [
     path: '/{param*}',
     config: { auth: false },
     handler: Assets.servePublicDirectory,
+  },
+
+  {
+    method: 'GET',
+    path: '/deleteTweet/{tweetid}',
+    config: TweetController.deleteTweet,
   },
 ];

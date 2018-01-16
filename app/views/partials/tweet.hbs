@@ -1,14 +1,21 @@
 <div class="event">
   <div class="ui content">
-    <div class="summary">
+    <div class="ui summary">
       <a href="/profile/{{user._id}}">{{user.firstName}} {{user.lastName}}</a> tweeted
       <br>
     </div>
-    <div class="extra text">
+    <div class="extra text ">
       {{content}}
     </div>
-    <div class="meta">
+    <div class="meta ">
       {{timestamp}}
     </div>
   </div>
+  <div class="top right attached label">
+    <a href="/deleteTweet/{{id}}">
+      <i class="remove blue icon"></i>
+    </a>
+  </div>
+  </form>
+
 </div>
