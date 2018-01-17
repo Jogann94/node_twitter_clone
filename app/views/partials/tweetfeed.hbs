@@ -1,6 +1,27 @@
 <div class="ui raised segment">
   <div class="ui feed">
-    {{#each tweets}} {{> tweet}}
+    {{#each tweets}}
+    <div class="event">
+      <div class="ui content">
+        <div class="ui summary">
+          <a href="/profile/{{user._id}}">{{user.firstName}} {{user.lastName}}</a> tweeted
+          <br>
+        </div>
+        <div class="extra text ">
+          {{content}}
+        </div>
+        <div class="meta ">
+          {{timestamp}}
+        </div>
+      </div>
+      {{#if ../ownProfile}}
+      <div class="top right attached label">
+        <a href="/deleteTweet/{{id}}">
+          <i class="remove blue icon"></i>
+        </a>
+      </div>
+      {{/if}}
+    </div>
     <div class="ui  divider"></div>
     {{/each}}
   </div>
