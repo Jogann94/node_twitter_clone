@@ -32,11 +32,13 @@ exports.profile = {
     }
 
     function replyProfileView(tweets) {
+      const profileTweets = tweets.sort((a, b) => b.timestamp - a.timestamp);
+
       reply.view('profile', {
         title: pageTitle,
         user: userToLoad,
-        isOwn: ownProfile,
-        tweets,
+        ownProfile,
+        tweets: profileTweets,
       });
     }
 
@@ -47,11 +49,8 @@ exports.profile = {
           setProfileVars(userFound);
           return Tweet.find({ user: userFound.id }).populate('user');
         })
-        .then((foundTweets) => {
-          const profileTweets = foundTweets
-            .filter(t => t.user.email === userToLoad.email)
-            .sort('-timestamp user.firstName user.lastName');
-          replyProfileView(profileTweets);
+        .then((tweetsFound) => {
+          replyProfileView(tweetsFound);
         })
         .catch((err) => {
           reply.redirect('/');
@@ -60,7 +59,7 @@ exports.profile = {
       User.findById(id)
         .then((userFound) => {
           setProfileVars(userFound);
-          return Tweet.find({ user: id });
+          return Tweet.find({ user: id }).populate('user');
         })
         .then((tweetsFound) => {
           replyProfileView(tweetsFound);

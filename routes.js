@@ -32,4 +32,10 @@ module.exports = [
     path: '/deleteTweet/{tweetid}',
     config: TweetController.deleteTweet,
   },
+
+  {
+    method: 'POST',
+    path: '/createTweet',
+    config: TweetController.createTweet,
+  },
 ];
