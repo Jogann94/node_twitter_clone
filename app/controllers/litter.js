@@ -70,3 +70,31 @@ exports.profile = {
     }
   },
 };
+
+exports.followers = {
+  handler(request, reply) {
+    const id = encodeURIComponent(request.params.userid);
+
+    User.findById(id)
+      .populate('followers')
+      .then((userFound) => {
+        reply.view('userfeed', { users: userFound.followers });
+      })
+      .catch((err) => {
+        reply.redirect('/');
+      });
+  },
+};
+
+exports.following = {
+  handler(request, reply) {
+    const id = encodeURIComponent(request.params.userid);
+
+    User.findById(id)
+      .populate('following')
+      .then((userFound) => {
+        reply.view('userfeed', { users: userFound.following });
+      })
+      .catch((err) => {});
+  },
+};

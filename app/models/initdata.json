@@ -5,19 +5,25 @@
       "firstName": "Homer",
       "lastName": "Simpson",
       "email": "homer@simpson.com",
-      "password": "secret"
+      "password": "secret",
+      "following": ["->users.bart"],
+      "followers": ["->users.marge"]
     },
     "marge": {
       "firstName": "Marge",
       "lastName": "Simpson",
       "email": "marge@simpson.com",
-      "password": "secret"
+      "password": "secret",
+      "following": ["->users.homer", "->users.bart"],
+      "followers": ["->users.bart", "->users.homer"]
     },
     "bart": {
       "firstName": "Bart",
       "lastName": "Simpson",
       "email": "bart@simpson.com",
-      "password": "secret"
+      "password": "secret",
+      "following": ["->users.homer"],
+      "followers": ["->users.marge"]
     }
   },
   "tweets": {
