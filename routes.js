@@ -14,11 +14,11 @@ module.exports = [
   { method: 'POST', path: '/settings', config: Accounts.updateSettings },
 
   { method: 'GET', path: '/home', config: Litter.home },
-  {
-    method: 'GET',
-    path: '/profile/{userid?}',
-    config: Litter.profile,
-  },
+  { method: 'GET', path: '/profile/{userid?}', config: Litter.profile },
+  { method: 'GET', path: '/followers/{userid}', config: Litter.followers },
+  { method: 'GET', path: '/following/{userid}', config: Litter.following },
+  { method: 'POST', path: '/follow/{userid}', config: Litter.follow },
+  { method: 'POST', path: '/stopfollow/{userid}', config: Litter.stopfollow },
 
   {
     method: 'GET',

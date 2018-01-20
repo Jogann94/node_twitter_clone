@@ -6,7 +6,7 @@
       {{> userinfo }}
     </div>
     <div class="ten wide right floated column">
-      {{> tweetform }} {{> tweetfeed }}
+      {{#if ownProfile}} {{> tweetform }} {{/if}} {{> tweetfeed }}
     </div>
   </div>
 </section>

@@ -16,12 +16,29 @@ mongoose.connection.on('connected', () => {
     const User = require('./user');
     const Tweet = require('./tweet');
     const data = require('./initdata.json');
-
+    let dataFromDB = null;
     seeder
       .seed(data, { dropDatabase: false, dropCollections: true })
       .then((dbData) => {
+        dataFromDB = dbData;
         console.log('preloading Test Data');
         console.log(dbData);
+        return User.find({}).populate(['followers', 'following']);
+      })
+      .then((usersFound) => {
+        const marge = usersFound.find(user => user.email === 'marge@simpson.com');
+        const homer = usersFound.find(user => user.email === 'homer@simpson.com');
+        const bart = usersFound.find(user => user.email === 'bart@simpson.com');
+
+        bart.followers.push(marge._id, homer._id);
+        marge.following.push(bart._id, homer._id);
+        homer.following.push(bart._id);
+
+        homer.followers.push(marge._id);
+
+        usersFound.forEach((user) => {
+          user.save();
+        });
       })
       .catch((err) => {
         console.log(err);

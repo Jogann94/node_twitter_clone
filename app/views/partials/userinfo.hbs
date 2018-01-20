@@ -7,9 +7,26 @@
     <div class=meta>
       <a>{{user.email}}</a>
     </div>
+    <div class="extra text">
+      <a href="/followers/{{user.id}}">{{ user.followers.length }} Followers</a>
+      <br/>
+      <a href="/following/{{user.id}}">{{ user.following.length }} Following</a>
+    </div>
+
   </div>
-  <div class="ui bottom attached button">
-    <i class="add icon"></i>
-    Follow
-  </div>
+  {{#unless ownProfile}} {{#if isFollowing}}
+  <form class="ui form" action="/stopfollow/{{user.id}}" method="POST">
+    <button class="ui bottom attached blue submit button">
+      <i class="add icon"></i>
+      Stop Following
+    </button>
+  </form>
+  {{else}}
+  <form class="ui form" action="/follow/{{user.id}}" method="POST">
+    <button class="ui bottom attached blue submit button">
+      <i class=" add icon "></i>
+      Follow
+    </button>
+  </form>
+  {{/if}} {{/unless}}
 </div>

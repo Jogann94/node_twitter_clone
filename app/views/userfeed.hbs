@@ -1,0 +1,17 @@
+{{> mainmenu }}
+
+<section class="ui raised segment">
+  <div class="ui feed">
+    {{#each users}}
+    <div class="event">
+      <div class="ui header">
+        <div class="ui summary">
+          <i class="user icon"></i>
+          <a href=" /profile/{{id}} ">{{firstName}} {{lastName}}</a>
+        </div>
+      </div>
+    </div>
+    <div class="ui divider "></div>
+    {{/each}}
+  </div>
+</section>
