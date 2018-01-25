@@ -76,20 +76,26 @@ exports.createTweet = {
 
   handler(request, reply) {
     const usermail = request.auth.credentials.loggedInUser;
+    let redirectPath;
+    if (request.info.referrer.includes('profile')) {
+      redirectPath = '/profile';
+    } else {
+      redirectPath = '/home';
+    }
     User.findOne({ email: usermail })
       .then((userFound) => {
         const tweet = new Tweet();
         tweet.user = userFound._id;
         tweet.timestamp = Date.now();
-        tweet.content = request.payload.tweetContent;
+        tweet.content = request.payload.content;
 
         return tweet.save();
       })
       .then((newTweet) => {
-        reply.redirect(request.info.referrer);
+        reply.redirect(redirectPath);
       })
       .catch((err) => {
-        reply.redirect(request.info.referrer);
+        reply.redirect(redirectPath);
       });
   },
 };
