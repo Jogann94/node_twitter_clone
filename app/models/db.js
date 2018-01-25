@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise;
 
 let dbURI = 'mongodb://localhost/litter';
 if (process.env.NODE_ENV === 'production') {
-  dbURI = process.env.MONGODB_URI;
+  dbURI = process.env.MONGOLAB_URI;
 }
 
 mongoose.connect(dbURI);
