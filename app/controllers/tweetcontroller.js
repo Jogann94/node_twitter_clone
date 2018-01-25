@@ -78,7 +78,7 @@ exports.createTweet = {
     const usermail = request.auth.credentials.loggedInUser;
     let redirectPath;
     if (request.info.referrer.includes('profile')) {
-      redirectPath = '/profile';
+      redirectPath = '/profile/';
     } else {
       redirectPath = '/home';
     }
