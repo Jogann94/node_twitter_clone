@@ -4,6 +4,7 @@
   "description": "Project for OTH Course Building Modern Web-Applications with Node JS",
   "main": "index.js",
   "scripts": {
+    "start": "node index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

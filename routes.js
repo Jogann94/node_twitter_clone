@@ -19,6 +19,7 @@ module.exports = [
   { method: 'GET', path: '/following/{userid}', config: Litter.following },
   { method: 'POST', path: '/follow/{userid}', config: Litter.follow },
   { method: 'POST', path: '/stopfollow/{userid}', config: Litter.stopfollow },
+  { method: 'GET', path: '/friendsfeed', config: Litter.friendsfeed },
 
   {
     method: 'GET',

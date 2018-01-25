@@ -169,3 +169,29 @@ exports.stopfollow = {
       });
   },
 };
+
+exports.friendsfeed = {
+  handler(request, reply) {
+    const usermail = request.auth.credentials.loggedInUser;
+
+    let followingUserIds = null;
+
+    User.findOne({ email: usermail })
+      .populate('following')
+      .then((user) => {
+        followingUserIds = user.following.map(u => u.id);
+        return Tweet.find({}).populate('user');
+      })
+      .then((tweets) => {
+        const friendTweets = tweets.filter(t => followingUserIds.includes(t.user.id));
+
+        reply.view('friendsfeed', {
+          title: 'Friends Feed',
+          tweets: friendTweets,
+        });
+      })
+      .catch((err) => {
+        reply.redirect('/');
+      });
+  },
+};
