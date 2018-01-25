@@ -5,11 +5,10 @@ exports.home = {
   handler(request, reply) {
     Tweet.find({})
       .populate('user')
-      .sort('-timestamp user.firstName user.lastName')
       .then((tweets) => {
         reply.view('home', {
           title: 'Litter',
-          tweets,
+          tweets: tweets.sort((a, b) => b.timestamp - a.timestamp),
         });
       })
       .catch((err) => {
@@ -50,6 +49,9 @@ exports.profile = {
       .populate('following')
       .then((user) => {
         currentUser = user;
+        if (id === user.id) {
+          reply.redirect('/profile/');
+        }
         if (!id) {
           setProfileVars(currentUser);
           Tweet.find({ user: currentUser.id })

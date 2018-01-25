@@ -1,7 +1,7 @@
-<form class="ui form" method="POST" action="/createTweet">
+<form class="ui form" method="POST" action={{#if user}} "/createTweet/profile"{{else}} "/createTweet/home"{{/if}}>
   <div class="field">
     <label>Content</label>
-    <textarea rows="4" name="tweetContent"></textarea>
+    <textarea rows="4" name="content"></textarea>
   </div>
   <button class="ui blue submit button">Submit</button>
 </form>

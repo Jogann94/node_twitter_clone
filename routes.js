@@ -36,7 +36,7 @@ module.exports = [
 
   {
     method: 'POST',
-    path: '/createTweet',
+    path: '/createTweet/{view}',
     config: TweetController.createTweet,
   },
 ];
